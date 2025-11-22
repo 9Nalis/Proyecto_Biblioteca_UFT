@@ -1,0 +1,16 @@
+# ============================================
+# Sistema de Gestión de Biblioteca UFT
+# Requirements - Dependencias Python
+# ============================================
+
+# Framework principal para la aplicación web
+streamlit
+
+# Manipulación y análisis de datos
+pandas
+
+# Visualizaciones interactivas
+plotly
+
+# Base de datos SQLite (incluido en Python, no requiere instalación)
+# sqlite3 - built-in

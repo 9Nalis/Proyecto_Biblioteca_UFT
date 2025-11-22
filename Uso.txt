@@ -1,0 +1,54 @@
+MANUAL DE USUARIO - SISTEMA DE BIBLIOTECA
+
+1. CÓMO INICIAR EL SISTEMA
+--------------------------
+Para abrir el programa, no se debe ejecutar el archivo Python directamente. Hay que abrir la terminal en la carpeta del proyecto y escribir:
+
+   python -m streamlit run streamlit_semana6.py
+
+El sistema se abrirá en el navegador web predeterminado.
+
+--------------------------
+
+2. MÓDULOS DEL SISTEMA
+
+El menú lateral permite navegar entre las distintas funcionalidades:
+
+A. Dashboard
+   Muestra un resumen del estado actual de la biblioteca: total de libros, usuarios registrados y multas pendientes. Sirve para tener una vista rápida de qué está pasando.
+
+B. Usuarios
+   Aquí se gestionan las personas.
+   - Crear Usuario: Al registrar a alguien, el RUT debe ingresarse con guion (ej: 12345678-9). El sistema valida que el correo tenga un formato correcto.
+   - Se puede buscar usuarios por nombre o RUT en la barra superior.
+
+C. Libros (Catálogo)
+   Corresponde a la información bibliográfica (Título, Autor, ISBN).
+   Aquí se registran las obras nuevas. Si se quiere agregar copias físicas, se hace en la sección "Ejemplares".
+
+D. Ejemplares
+   Maneja el inventario físico.
+   - Cada ejemplar tiene un código de barras único y una ubicación en estantería.
+   - Los estados pueden ser: disponible, prestado, en reparación, perdido o baja.
+   - Los colores en la tabla indican el estado actual del libro.
+
+E. Préstamos (Funcionalidad Principal)
+   - Nuevo Préstamo: Se selecciona un usuario y un libro que esté "disponible". El sistema calcula la fecha de devolución automáticamente dependiendo si el usuario es estudiante (7 días) o docente (14 días).
+   - Devoluciones: En la pestaña "Devoluciones", se busca el préstamo activo. Al devolverlo, el sistema libera el ejemplar automáticamente para que otro lo pueda pedir. Si hubo atraso, se genera una multa de $500 por día.
+
+F. Reportes
+   Muestra estadísticas como los libros más solicitados, los usuarios con más préstamos y la distribución del inventario.
+
+--------------------------
+
+3. PROBLEMAS COMUNES Y SOLUCIONES
+
+- Error: "Warning: to view this Streamlit app..."
+  Causa: Se ejecutó el script como un archivo normal de Python.
+  Solución: Usar el comando indicado en el paso 1 (python -m streamlit run...).
+
+- Error al crear usuario (RUT inválido)
+  Solución: Asegurarse de escribir el dígito verificador y el guion.
+
+- La base de datos tiene errores o datos corruptos
+  Solución: Ejecutar el script "python crear_db.py" en la terminal para resetear todo a los valores de fábrica (borra los datos nuevos).
